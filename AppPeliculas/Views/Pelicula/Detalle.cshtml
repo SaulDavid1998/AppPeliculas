@@ -1,0 +1,97 @@
+﻿@model Pelicula
+
+@{
+    ViewBag.Title = "Detalles";
+
+    List<Pelicula> lstFavoritos = Context.Session.GetObjectFromJson<List<Pelicula>>("Favoritos");
+
+    if (lstFavoritos == null)
+    {
+        lstFavoritos = new List<Pelicula>();
+    }
+
+    bool enFavorito = false;
+
+    foreach (var registro  in lstFavoritos)
+    {
+        if (registro.PeliculaId ==Model.PeliculaId)
+        {
+            enFavorito = true;
+            break;
+        }
+    }
+}
+
+
+<div class="row">
+
+    <h2 class="text-center">@Model.Titulo</h2>
+
+    @if (TempData["favoritos"] != null)
+    {
+        <h4 class="text-center text-primary">@TempData["favoritos"]</h4>
+    }
+    <div class="col-md-3">
+        <img class="d-block mx-auto img-fluid" src="~/Imagenes/@ViewBag.ImagenUrl" />
+    </div>
+
+    <div class="col-md-6 border bg-light">
+        <p>@Model.Descripcion</p>
+        <div class="list-group text-center">
+            <div class="list-group-item"><strong>Estreno: </strong> @Model.Estreno</div>
+            <div class="list-group-item"><strong>Duracion: </strong>@Model.Duracion (minutos)</div>
+            <div class="list-group-item"><strong>Género: </strong> @Model.Genero.GeneroNombre</div>
+            <div class="list-group-item"><strong>Estudio: </strong> @Model.Estudio.EstudioNombre</div>
+            <div class="list-group-item">
+                @if (enFavorito)
+                {
+                    <form asp-action="EliminarFavorito" method="post">
+                        <input type="hidden" class="form-control" asp-for="PeliculaId" />
+                        <a class="btn btn-sm btn-secondary" asp-controller="Home" asp-action="Index">
+                            Volver a Inicio
+                        </a>
+
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Eliminar de Favoritos <i class="fas fa-xmark"></i>
+                        </button>
+
+                    </form>
+                }
+                else
+                {
+                    <form asp-action="AgregarFavorito" method="post">
+                        <input type="hidden" class="form-control" asp-for="PeliculaId" />
+                        <a class="btn btn-sm btn-secondary" asp-controller="Home" asp-action="Index">
+                            Volver a Inicio
+                        </a>
+
+                        <button type="submit" class="btn btn-sm btn-warning">
+                            Agregar a Favoritos<i class="fas fa-plus"></i>
+                        </button>
+
+                    </form>
+                }
+
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="col-md-3 d-none d-md-block">
+        <img class="d-block mx-auto img-fluid" src="~/Imagenes/@ViewBag.ImagenUrl" />
+    </div>
+
+    @* <div class="col-md-3">
+        <div class="list-group">
+            <a class="list-group-item" asp-controller="Home" asp-action="Index">
+                Volver a Inicio
+            </a>
+            <a class="list-group-item" href="#">
+                Agregar a Favoritos
+            </a>
+        </div>          
+    </div> *@
+</div>
+
+
+

@@ -1,0 +1,73 @@
+﻿@model Registro
+
+
+@{
+        ViewBag.Title = "Registrarse";
+
+}
+
+
+<h2>Registrarse</h2>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Registrarse" method="post">
+    <div class="row mb-2">
+        <div class="col-md-2">
+            <label asp-for="Usuario" class="form-label"></label>
+            
+        </div>
+        <div class="col-md-4">
+            <input asp-for="Usuario" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Usuario" class="text-danger"></span>
+        </div>     
+        
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-2">
+            <label asp-for="Contraseña" class="form-label"></label>
+
+        </div>
+        <div class="col-md-4">
+            <input asp-for="Contraseña" class="form-control" />
+        </div>
+        <div class="col">
+            <span asp-validation-for="Contraseña" class="text-danger"></span>
+        </div>
+
+    </div>
+
+    <div class="row mb-2">
+        <div class="col-md-2">
+            <label asp-for="ConfirmarContraseña" class="form-label">Confirmar Contraseña</label>
+
+        </div>
+        <div class="col-md-4">
+            <input asp-for="ConfirmarContraseña" class="form-control"/>
+        </div>
+        <div class="col">
+            <span asp-validation-for="ConfirmarContraseña" class="text-danger"></span>
+        </div>
+
+    </div>
+
+    <div class="row mb-3">
+        <div class="col offset-md-2">
+            <button type="submit" class="btn btn-primary">Registrarse</button>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Cancelar</a>
+
+        </div>
+    </div>
+        <div class="row">
+            <div class="col offset-md-2">
+                ¿Ya tiene cuenta? <a href="#">Iniciar Sesion</a>
+            </div>
+        </div>
+
+
+
+
+</form>

@@ -1,0 +1,25 @@
+﻿@model List<Pelicula>
+
+@{
+    ViewBag.Title = "Favoritos";
+}
+
+
+<div class="row">
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8 border">
+        <div class="row justify-content-center gy-3">
+            @foreach (var registro in Model)
+            {
+                <div class="col-6 col-sm-4 col-md-3">
+                    <a asp-controller="Pelicula" asp-action="Detalle" asp-route-id="@registro.PeliculaId" asp-route-slug="@registro.Slug">
+                        <img class="img-fluid d-block mx-auto" src="~/Imagenes/@(registro.Titulo + ".jpg")" title="@registro.Slug" />
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-2"></div>
+</div>

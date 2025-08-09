@@ -1,0 +1,56 @@
+﻿@model Pelicula
+
+@{
+    ViewBag.Title = "Admin-Modificar Pelicula";
+}
+
+
+<form asp-action="Modificar" method="post">
+    <div class="text-danger" asp-validation-summary="All"></div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Titulo"></label>
+        <input class="form-control" asp-for="Titulo" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Estreno"></label>
+        <input class="form-control" asp-for="Estreno" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Descripcion"></label>
+        <textarea class="form-control" asp-for="Descripcion" rows="6" style="resize:none"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" asp-for="Duracion"></label>
+        <input class="form-control" asp-for="Duracion" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="GeneroFK">Genero</label>
+        <select class="form-select" asp-for="GeneroFK">
+            @foreach (Genero registro in ViewBag.lstGeneros)
+            {
+                <option value="@registro.GeneroID">@registro.GeneroNombre</option>
+            }
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="EstudioFK">Genero</label>
+        <select class="form-select" asp-for="EstudioFK">
+            @foreach (Estudio registro in ViewBag.lstEstudios)
+            {
+                <option value="@registro.EstudioID">@registro.EstudioNombre</option>
+            }
+
+        </select>
+    </div>
+    <input type="hidden" asp-for="PeliculaId" />
+    <button class="btn btn-primary" type="submit" asp-area="Admin" asp-controller="Pelicula" asp-action="Modificar">Modificar</button>
+    <a class="btn btn-secondary" asp-area="Admin" asp-controller="Pelicula" asp-action="Index">Cancelar</a>
+
+</form>

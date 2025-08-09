@@ -1,0 +1,124 @@
+﻿@model List<Pelicula>
+
+@{
+    ViewBag.Title = "Lista";
+}
+
+<div class="row">
+   
+    <div class="col-md-2">
+        <h3 class="text-center">Genero</h3>
+        <div class="list-group mb-2">
+            <a class="list-group-item
+                @if(ViewBag.Genero=="todo")
+                    {
+                      <text>active</text>
+                    }" 
+                asp-action="Index" asp-route-genero="todo" asp-route-estudio="@ViewBag.Estudio">
+            Todo
+            </a>
+
+            @foreach (Genero genero in ViewBag.lstGeneros)
+            {
+                <a class="list-group-item
+                    @if(ViewBag.Genero==genero.GeneroID)
+                      {
+                       <text>active</text>
+                      }"
+                    asp-action="Index" asp-route-genero="@genero.GeneroID" asp-route-estudio="@ViewBag.Estudio">
+
+                @genero.GeneroNombre
+                </a>
+            }
+        </div>
+
+    </div>
+
+    <div class="d-md-none col-md-2 d-block">
+        <h3 class="text-center">Estudio</h3>
+        <div class="list-group mb-2">
+            <a class="list-group-item
+               @if (ViewBag.Estudio == "todo")
+               {
+                        <text>active</text>
+               }"
+
+                asp-action="Index" asp-route-genero="@ViewBag.Genero" asp-route-estudio="todo">
+                Todo</a>
+
+            @foreach (Estudio estudio in ViewBag.lstEstudios)
+            {
+                <a class="list-group-item
+                   @if (ViewBag.Estudio == estudio.EstudioID)
+                   {
+                                    <text>active</text>
+                   }"
+                asp-action="Index" asp-route-genero="@ViewBag.Genero" asp-route-estudio="@estudio.EstudioID">
+
+                @estudio.EstudioNombre</a>
+            }
+        </div>
+    </div>
+
+
+    <div class="col-md-8">
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Estreno</th>
+                    <th>Genero</th>
+                    <th>Estudio</th>
+                    <th></th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                @foreach (Pelicula pelicula in Model)
+                {
+                    <tr>
+                        <td>@pelicula.Titulo</td>
+                        <td>@pelicula.Estreno</td>
+                        <td>@pelicula.Genero.GeneroNombre</td>
+                        <td>@pelicula.Estudio.EstudioNombre</td>
+                        <td>
+                            <a class="btn btn-sm btn-secondary" asp-controller="Pelicula" asp-action="Detalle"
+                               asp-route-id="@pelicula.PeliculaId" asp-route-slug="@pelicula.Slug">Detalles</a>                   
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="d-md-block col-md-2 d-none">
+        <h3 class="text-center">Estudio</h3>
+        <div class="list-group">
+            <a class="list-group-item
+               @if (ViewBag.Estudio == "todo")
+               {
+                    <text>active</text>
+               }"
+
+                asp-action="Index" asp-route-genero="@ViewBag.Genero" asp-route-estudio="todo">
+            Todo</a>
+
+            @foreach (Estudio estudio in ViewBag.lstEstudios)
+            {
+                <a class="list-group-item
+                   @if (ViewBag.Estudio == estudio.EstudioID)
+                   {
+                            <text>active</text>
+                   }"
+                    asp-action="Index" asp-route-genero="@ViewBag.Genero" asp-route-estudio="@estudio.EstudioID">
+
+                    @estudio.EstudioNombre</a>
+            }
+        </div>
+    </div>
+
+</div>
+
