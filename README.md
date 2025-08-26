@@ -8,12 +8,15 @@ La sección **Favoritos**, visible en la barra de navegación, muestra un contad
 
 Entre sus características destacan:
 
--Interfaz moderna y responsiva gracias a **Bootstrap**.
+- Interfaz moderna y responsiva gracias a **Bootstrap**.
 
--Persistencia de datos mediante **Entity Framework Core** y **SQL Server**.
+- Persistencia de datos mediante **Entity Framework Core** y **SQL Server**.
 
--Validaciones para evitar registros incompletos o datos no validos.
+- Validaciones para evitar registros incompletos o datos no validos.
 
--Posibilidad de filtrar películas por genero o estudio.
+- Posibilidad de filtrar películas por genero o estudio.
+
+**Nota**: El proyecto fue hecho con Ef Core usando localDB. Si se descarga el repositorio de GitHub hay que ejecutar el comando Update-Database en la consola del administrador de paquetes
+para crear la base de datos local. De lo contrario la aplicacion mostrara un error y no se ejecutara.
 
 <img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/2f0a2cc6-0fe1-40f2-9d87-4bb05e8ccf58" />
