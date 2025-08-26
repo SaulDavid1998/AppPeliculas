@@ -15,3 +15,5 @@ Entre sus características destacan:
 -Validaciones para evitar registros incompletos o datos no validos.
 
 -Posibilidad de filtrar películas por genero o estudio.
+
+<img width="700" height="700" alt="image" src="https://github.com/user-attachments/assets/2f0a2cc6-0fe1-40f2-9d87-4bb05e8ccf58" />
