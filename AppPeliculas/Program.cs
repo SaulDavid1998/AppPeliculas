@@ -29,15 +29,15 @@ namespace AppPeliculas
             var app = builder.Build();
 
             //Desplegar la web en Azure
-            using(var scope=app.Services.CreateScope())
-            {
-                var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<PeliculaContext>();
-                if(context.Database.IsRelational())
-                {
-                    context.Database.Migrate();
-                }
-            }
+            //using(var scope=app.Services.CreateScope())
+            //{
+            //    var services = scope.ServiceProvider;
+            //    var context = services.GetRequiredService<PeliculaContext>();
+            //    if(context.Database.IsRelational())
+            //    {
+            //        context.Database.Migrate();
+            //    }
+            //}
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
