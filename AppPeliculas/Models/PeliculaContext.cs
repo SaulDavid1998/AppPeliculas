@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AppPeliculas.Models
 {
-    public class PeliculaContext: IdentityDbContext
+    public class PeliculaContext: IdentityDbContext<User>
     {
         public PeliculaContext(DbContextOptions<PeliculaContext> options) : base(options)
         {

@@ -18,7 +18,7 @@ namespace AppPeliculas
                 options.UseSqlServer(builder.Configuration.GetConnectionString("conexion")));
 
             //Autenticacion y Autorizacion
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            builder.Services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequiredLength = 6;
                 options.Password.RequireDigit = false;

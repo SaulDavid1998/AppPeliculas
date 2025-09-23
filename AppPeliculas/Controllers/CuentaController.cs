@@ -6,10 +6,10 @@ namespace AppPeliculas.Controllers
 {
     public class CuentaController : Controller
     {
-        private UserManager<IdentityUser> userManager = null!;
-        private SignInManager<IdentityUser> signInManager = null!;
+        private UserManager<User> userManager = null!;
+        private SignInManager<User> signInManager = null!;
 
-        public CuentaController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public CuentaController(UserManager<User> userManager, SignInManager<User> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -27,7 +27,7 @@ namespace AppPeliculas.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser
+                var user = new User
                 {
                     UserName = objRegistro.Usuario,
                 };
