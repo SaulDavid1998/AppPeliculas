@@ -31,8 +31,5 @@ namespace AppPeliculas.Areas.Admin.Controllers
 
         }
 
-        
-
-
     }
 }

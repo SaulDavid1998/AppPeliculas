@@ -1,11 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using AppPeliculas.Models;
 using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 namespace AppPeliculas
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -38,6 +39,13 @@ namespace AppPeliculas
             //        context.Database.Migrate();
             //    }
             //}
+
+            // Crear el usuario administrador al iniciar la aplicación
+            var scopeFactory = app.Services.GetService<IServiceScopeFactory>();
+            using (var scope = scopeFactory.CreateScope())
+            {
+                await ConfigureIdentity.CrearUsuarioAdmin(scope.ServiceProvider);
+            }
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
