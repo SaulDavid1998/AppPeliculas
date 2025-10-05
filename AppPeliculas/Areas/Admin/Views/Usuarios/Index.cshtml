@@ -6,9 +6,11 @@
 
 <h1 class="mb-2">Gestion de Usuarios</h1>
 
-<h5 class="mt-2">
-    <a asp-action="Agregar">Agregar Usuario</a>
-</h5>
+@if (TempData["Mensaje"] != null)
+{
+    <h4 class="text-center text-primary">@TempData["Mensaje"]</h4>
+}
+
 
 <table class="table table-bordered table-sm">
     <thead>
@@ -17,7 +19,7 @@
             <th>Rol</th>
             <th></th>
             <th></th>
-            <th></th>
+ 
         </tr>
     </thead>
 
@@ -48,8 +50,16 @@
                     
 
                     <td>
-                        <form method="post" asp-action="AgregarAdmin" asp-route-id="@registro.Id">
+                        <form method="post" asp-action="AgregarAdmin">
+                            <input type="hidden" name="Id" value="@registro.Id"/>
                             <button type="submit" class="btn btn-primary">Agregar a Admin</button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form method="post" asp-action="EliminarAdmin">
+                            <input type="hidden" name="Id" value="@registro.Id" />
+                            <button type="submit" class="btn btn-warning">Eliminar de Admin</button>
                         </form>
                     </td>
                 </tr>

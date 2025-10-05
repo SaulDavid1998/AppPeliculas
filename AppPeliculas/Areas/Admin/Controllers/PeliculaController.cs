@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AppPeliculas.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Administrador")]
     [Area("Admin")]
     public class PeliculaController : Controller
     {
