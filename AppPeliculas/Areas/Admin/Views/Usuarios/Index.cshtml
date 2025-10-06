@@ -50,17 +50,34 @@
                     
 
                     <td>
-                        <form method="post" asp-action="AgregarAdmin">
-                            <input type="hidden" name="Id" value="@registro.Id"/>
-                            <button type="submit" class="btn btn-primary">Agregar a Admin</button>
-                        </form>
+                        @if (registro.UserName=="Administrador")
+                        {
+                            <button class="btn btn-primary" disabled>Agregar a Admin</button>
+
+                        }
+                        else
+                        {
+                            <form method="post" asp-action="AgregarAdmin">
+                                <input type="hidden" name="Id" value="@registro.Id" />
+                                <button type="submit" class="btn btn-primary">Agregar a Admin</button>
+                            </form>
+                        }
+                        
                     </td>
 
                     <td>
-                        <form method="post" asp-action="EliminarAdmin">
-                            <input type="hidden" name="Id" value="@registro.Id" />
-                            <button type="submit" class="btn btn-warning">Eliminar de Admin</button>
-                        </form>
+                        @if (registro.UserName == "Administrador")
+                        {
+                            <button class="btn btn-warning" disabled>Eliminar de Admin</button>
+                        }
+                        else
+                        {
+                            <form method="post" asp-action="EliminarAdmin">
+                                <input type="hidden" name="Id" value="@registro.Id" />
+                                <button type="submit" class="btn btn-warning">Eliminar de Admin</button>
+                            </form>
+                        }
+
                     </td>
                 </tr>
                
@@ -71,3 +88,5 @@
         }
     </tbody>
 </table>
+
+<a asp-action="Index" asp-controller="Pelicula" asp-area="Admin" class="btn btn-primary">Volver</a>

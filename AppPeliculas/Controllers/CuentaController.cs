@@ -91,6 +91,12 @@ namespace AppPeliculas.Controllers
             return View(objIniciarSesion);
         }
 
+        [Route("Account/AccessDenied")]
+        public ActionResult AccesoDenegado()
+        {
+            return View();
+        }
+
 
     }
 }
